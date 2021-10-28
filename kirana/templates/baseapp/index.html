@@ -1,0 +1,47 @@
+<h1> Upload File </h1>
+<br>
+<form enctype="multipart/form-data"  action="/baseapp/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+<br>
+
+{% if filename %}
+
+File Name:  {{ filename }}
+
+<br>
+<br>
+
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo Electronico</th>
+        <th>Telefono</th>
+   </tr>
+
+
+    {% for row in content %}
+    <tr
+    {% if row.dup is True  %}
+       style="color:red"
+    {% endif %}
+    >
+        <td> {{ row.Nombre }} </td>
+        <td> {{ row.Correo  }} </td>
+        <td> {{ row.Tel  }} </td>
+   </tr>    
+    {% endfor %}
+
+
+</table>
+
+
+
+
+{% endif %}
